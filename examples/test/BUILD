@@ -47,6 +47,7 @@ terraform_integration_test(
 terraform_workspace(
     name = "whoami",
     srcs = [
+        "terraform.tfvars",
         "whoami.tf",
     ],
 )

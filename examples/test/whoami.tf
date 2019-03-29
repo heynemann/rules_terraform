@@ -3,6 +3,10 @@ provider "aws" {
   version = "~>2.3.0"
 }
 
+variable "from" {
+  default = "tf"
+}
+
 data "aws_caller_identity" "current" {}
 
 output "account_id" {
@@ -15,4 +19,8 @@ output "caller_arn" {
 
 output "caller_user" {
   value = "${data.aws_caller_identity.current.user_id}"
+}
+
+output "var_from" {
+  value = "${var.from}"
 }
