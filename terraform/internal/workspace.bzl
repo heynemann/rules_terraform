@@ -137,7 +137,7 @@ def terraform_workspace_macro(name, **kwargs):
         name = "%s.apply" % name,
         outs = ["%s.apply.sh" % name],
         cmd = TERRAFORM_SCRIPT.format(
-            command = "apply"
+            command = "apply",
             package = native.package_name(),
             tf_workspace_files_prefix = tf_workspace_files_prefix(),
         ),
@@ -150,7 +150,7 @@ def terraform_workspace_macro(name, **kwargs):
         name = "%s.destroy" % name,
         outs = ["%s.destroy.sh" % name],
         cmd = TERRAFORM_SCRIPT.format(
-            command = "destroy"
+            command = "destroy",
             package = native.package_name(),
             tf_workspace_files_prefix = tf_workspace_files_prefix(),
         ),
