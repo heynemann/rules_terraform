@@ -84,7 +84,7 @@ def _impl(ctx):
 
 ghrelease_assets = rule(
     _impl,
-    attrs = dict}
+    attrs = dict(
         content_publisher_attrs.items(),
         bazel_flags = attr.string_list(default = []),
         env = attr.string_dict(default = {}),
@@ -98,6 +98,6 @@ ghrelease_assets = rule(
             executable = True,
             cfg = "host",
         ),
-    },
+    ),
     executable = True,
 )
