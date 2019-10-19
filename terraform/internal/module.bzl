@@ -343,6 +343,6 @@ def module_impl(ctx, modulepath = None):
 
 terraform_module = rule(
     module_impl,
-    attrs = dict(module_tool_attrs.items(),  _module_attrs.items())
+    attrs = dict(module_tool_attrs.items(),  _module_attrs.items()),
     outputs = module_outputs,
 )
