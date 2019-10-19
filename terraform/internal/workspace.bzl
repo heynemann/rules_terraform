@@ -102,7 +102,7 @@ def _workspace_impl(ctx):
 terraform_workspace = rule(
     _workspace_impl,
     executable = True,
-    attrs = module_tool_attrs + content_publisher_attrs + _workspace_attrs,
+    attrs = dict(module_tool_attrs.items() + content_publisher_attrs.items() + _workspace_attrs.items()),
     outputs = module_outputs,
 )
 
