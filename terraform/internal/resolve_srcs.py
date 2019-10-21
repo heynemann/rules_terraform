@@ -85,8 +85,8 @@ def main(args):
             parts = ModuleSourceRgx.split(f.read())
         # non-matched content is always returned first
         content = parts.pop(0)
-        root_output.write(content)
-        module_output.write(content)
+        root_output.write(content.encode())
+        module_output.write(content.encode())
         # iterate over each piece of content & associated capture group
         num_capture_groups = 2
         for prefix, label, suffix in [parts[i:i + num_capture_groups + 1]
