@@ -5,7 +5,10 @@ import io
 import json
 import re
 import tarfile
-from StringIO import StringIO
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 from collections import namedtuple
 from os.path import basename
 
