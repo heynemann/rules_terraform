@@ -114,12 +114,12 @@ def main(args):
         root_output_value = root_output.getvalue()
         root_tarinfo = tarfile.TarInfo(root_filename)
         root_tarinfo.size = len(root_output_value)
-        root_resolved_output.addfile(root_tarinfo, StringIO(root_output_value))
+        root_resolved_output.addfile(root_tarinfo, io.BytesIO(root_output_value))
 
         module_output_value = module_output.getvalue()
         module_tarinfo = tarfile.TarInfo(module_filename)
         module_tarinfo.size = len(module_output_value)
-        module_resolved_output.addfile(module_tarinfo, StringIO(module_output_value))
+        module_resolved_output.addfile(module_tarinfo, io.BytesIO(module_output_value))
 
     if unseen_replacements:
         raise ValueError(
