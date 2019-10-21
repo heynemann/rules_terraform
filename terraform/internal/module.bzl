@@ -29,17 +29,17 @@ _module_attrs = {
 
 module_outputs = {
     "out": "%{name}.tar.gz",
-    "docs_md": "%{name}_docs.md",
-    "docs_json": "%{name}_docs.json",
+    #"docs_md": "%{name}_docs.md",
+    #"docs_json": "%{name}_docs.json",
     "graph": "%{name}_graph.dot",
 }
 
 module_tool_attrs = {
-    "_terraform_docs": attr.label(
-        default = Label("@tool_terraform_docs"),
-        executable = True,
-        cfg = "host",
-    ),
+    #"_terraform_docs": attr.label(
+        #default = Label("@tool_terraform_docs"),
+        #executable = True,
+        #cfg = "host",
+    #),
     "_terraform": attr.label(
         default = Label("@tool_terraform"),
         executable = True,
@@ -305,7 +305,7 @@ def module_impl(ctx, modulepath = None):
 
     # collect files & add generated docs
     file_map, file_tars = _collect_data(ctx)
-    file_map["README.md"] = ctx.outputs.docs_md
+    #file_map["README.md"] = ctx.outputs.docs_md
 
     # collect plugins & we can finally create our TerraformModuleInfo!
     plugins = _collect_plugins(ctx)
@@ -337,7 +337,7 @@ def module_impl(ctx, modulepath = None):
         providers = [
             module_info,
             DefaultInfo(files = depset(direct = [ctx.outputs.out])),
-            OutputGroupInfo(docs = [ctx.outputs.docs_md]),
+            #OutputGroupInfo(docs = [ctx.outputs.docs_md]),
         ],
     )
 
