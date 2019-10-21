@@ -122,30 +122,30 @@ def _collect_deps(ctx):
     modules = depset(transitive = transitive + [direct_modules])
     return direct_modules, modules
 
-def _generate_docs(ctx, srcs, md_output = None, json_output = None):
-    files = ctx.actions.args()
-    files.add_all([f for f in srcs if f.extension == "tf"])
+#def _generate_docs(ctx, srcs, md_output = none, json_output = none):
+    #files = ctx.actions.args()
+    #files.add_all([f for f in srcs if f.extension == "tf"])
 
-    #    files = [f for f in srcs if f.extension == "tf"]
-    #    if files
-    ctx.actions.run_shell(
-        inputs = srcs + [ctx.executable._terraform_docs],
-        outputs = [md_output, json_output],
-        arguments = [
-            ctx.executable._terraform_docs.path,
-            md_output.path,
-            json_output.path,
-            files,
-        ],
-        command = """set -eu
-terraform_docs="$1"; shift
-md_out="$1"; shift
-json_out="$1"; shift
-"$terraform_docs" --sort-inputs-by-required md   "$@" > "$md_out"
-"$terraform_docs" --sort-inputs-by-required json "$@" > "$json_out"
-""",
-        tools = ctx.attr._terraform_docs.default_runfiles.files,
-    )
+    ##    files = [f for f in srcs if f.extension == "tf"]
+    ##    if files
+    #ctx.actions.run_shell(
+        #inputs = srcs + [ctx.executable._terraform_docs],
+        #outputs = [md_output, json_output],
+        #arguments = [
+            #ctx.executable._terraform_docs.path,
+            #md_output.path,
+            #json_output.path,
+            #files,
+        #],
+        #command = """set -eu
+#terraform_docs="$1"; shift
+#md_out="$1"; shift
+#json_out="$1"; shift
+#"$terraform_docs" --sort-inputs-by-required md   "$@" > "$md_out"
+#"$terraform_docs" --sort-inputs-by-required json "$@" > "$json_out"
+#""",
+        #tools = ctx.attr._terraform_docs.default_runfiles.files,
+    #)
 
 def _generate_graph(ctx, root_bundle = None, plugins = None, output = None):
     plugin_files = {}
@@ -296,12 +296,12 @@ def module_impl(ctx, modulepath = None):
     )
 
     # generate docs from sources
-    _generate_docs(
-        ctx,
-        srcs,
-        md_output = ctx.outputs.docs_md,
-        json_output = ctx.outputs.docs_json,
-    )
+    #_generate_docs(
+        #ctx,
+        #srcs,
+        #md_output = ctx.outputs.docs_md,
+        #json_output = ctx.outputs.docs_json,
+    #)
 
     # collect files & add generated docs
     file_map, file_tars = _collect_data(ctx)
