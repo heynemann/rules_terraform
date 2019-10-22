@@ -91,8 +91,8 @@ def main(args):
         num_capture_groups = 2
         for prefix, label, suffix in [parts[i:i + num_capture_groups + 1]
                                       for i in range(0, len(parts), num_capture_groups + 1)]:
-            root_output.write(prefix)
-            module_output.write(prefix)
+            root_output.write(prefix.encode())
+            module_output.write(prefix.encode())
             modulepath = embeds.get(label)
             if not modulepath:
                 raise ValueError("No matching label found for '%s'. "
