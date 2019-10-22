@@ -102,11 +102,11 @@ def main(args):
             module_replacement = str('"../%s"' % modulepath)
             root_replacement = str('"./modules/%s"' % modulepath)
 
-            root_output.write(root_replacement)
-            root_output.write(suffix)
+            root_output.write(root_replacement.encode())
+            root_output.write(suffix.encode())
 
-            module_output.write(module_replacement)
-            module_output.write(suffix)
+            module_output.write(module_replacement.encode())
+            module_output.write(suffix.encode())
 
         root_filename = file_basename
         module_filename = file_basename
