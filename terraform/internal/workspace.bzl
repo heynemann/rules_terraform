@@ -126,7 +126,7 @@ def terraform_workspace_macro(name, **kwargs):
         name = "%s.init" % name,
         outs = ["%s.init.sh" % name],
         cmd = TERRAFORM_SCRIPT.format(
-            command = "init"
+            command = "init",
             package = native.package_name(),
             tf_workspace_files_prefix = tf_workspace_files_prefix(),
         ),
